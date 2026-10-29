@@ -1,0 +1,17 @@
+{
+  "name": "Currency Converter - Real-time Global Exchange Rates",
+  "short_name": "CurrencyConvert",
+  "description": "Convert 150+ world currencies instantly with real-time exchange rates, multi-currency matrix, and offline rate caching.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b132b",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "./assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

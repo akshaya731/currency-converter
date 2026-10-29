@@ -1,0 +1,14 @@
+# Editors
+.vscode/
+.idea/
+*.swp
+# OS
+.DS_Store
+Thumbs.db
+# Temp / logs
+*.log
+*.tmp
+node_modules/
+# Private config (this project needs none, kept for safety)
+.env
+.env.*
