@@ -3,7 +3,7 @@
  * Advanced Currency Converter UI Controller
  * Features: Live real-time conversions, searchable currency selector modal,
  * multi-currency comparison matrix, dark/light theme toggle, quick chips & presets,
- * one-click clipboard copy, and interactive LinkedIn sharing modal.
+ * and one-click clipboard copy.
  */
 (function () {
   'use strict';
@@ -57,14 +57,6 @@
     currencySearchInput: $('currency-search-input'),
     modalCurrencyList: $('modal-currency-list'),
     modalTitle: $('modal-title'),
-    // LinkedIn Share Modal
-    shareModal: $('share-modal'),
-    shareModalOpenBtn: $('btn-share-linkedin'),
-    shareModalHeroBtn: $('btn-share-linkedin-hero'),
-    shareModalCloseBtn: $('share-modal-close-btn'),
-    copyPostBtn: $('copy-post-btn'),
-    launchLinkedinBtn: $('launch-linkedin-btn'),
-    postTextarea: $('linkedin-post-text'),
     // Toast
     toastContainer: $('toast-container')
   };
@@ -375,9 +367,6 @@
 
     el.resultPlaceholder.classList.add('d-none');
     el.resultActive.classList.remove('d-none');
-
-    // Update LinkedIn post text template
-    updateLinkedInPostTemplate(amount, from, to, convertedAmount, data.rate);
   }
 
   async function updateMultiCurrencyMatrix(amount, baseCurrency, signal) {
@@ -432,49 +421,6 @@
     } catch (e) {
       console.warn('Matrix rate update skipped:', e);
     }
-  }
-
-  /* ==========================================================================
-     LINKEDIN SHARE MODAL & TEMPLATE
-     ========================================================================== */
-  function updateLinkedInPostTemplate(amount, from, to, converted, rate) {
-    if (!el.postTextarea) return;
-    const postCopy = `🚀 Just launched my Currency Converter web application! 💱✨
-
-Built a high-performance, real-time currency conversion platform featuring:
-⚡ Live Exchange Rates powered by Frankfurter v2 API & Open ER-API fallback
-🌍 Instant conversion between 150+ global currencies
-📊 Multi-Currency Global Matrix comparing top currencies in real-time
-🌙 Sleek Fintech UI with Dark/Light mode & fluid glassmorphism
-🛡️ 30-minute in-memory intelligent caching & zero-latency offline resilience
-📱 100% Mobile responsive & PWA ready
-
-💡 Example live rate today:
-${amount} ${from} = ${converted.toFixed(2)} ${to} (1 ${from} = ${formatRateNumber(rate)} ${to})
-
-Check out the live demo and let me know your thoughts! 👇
-🔗 Live App: https://currency-converter.app (or your deployed URL)
-💻 Code Repository: https://github.com/your-username/currency-converter
-
-#webdevelopment #javascript #frontend #fintech #portfolio #opensource #coding #reactjs #webdev`;
-
-    el.postTextarea.value = postCopy;
-  }
-
-  function openShareModal() {
-    if (el.shareModal) el.shareModal.classList.add('active');
-  }
-
-  function closeShareModal() {
-    if (el.shareModal) el.shareModal.classList.remove('active');
-  }
-
-  function launchLinkedInShare() {
-    const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent('Real-Time Currency Converter | Modern Fintech Web App');
-    const summary = encodeURIComponent('Convert 150+ world currencies instantly with real-time exchange rates, multi-currency matrix, and offline caching.');
-    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`;
-    window.open(linkedinUrl, '_blank', 'width=600,height=600,toolbar=no,menubar=no');
   }
 
   /* ==========================================================================
@@ -568,32 +514,6 @@ Check out the live demo and let me know your thoughts! 👇
           showToast('Copied to clipboard!');
         });
       });
-    }
-
-    // LinkedIn Sharing Modal events
-    if (el.shareModalOpenBtn) el.shareModalOpenBtn.addEventListener('click', openShareModal);
-    if (el.shareModalHeroBtn) el.shareModalHeroBtn.addEventListener('click', openShareModal);
-    const footerShareLink = $('footer-share-link');
-    if (footerShareLink) footerShareLink.addEventListener('click', (e) => { e.preventDefault(); openShareModal(); });
-    if (el.shareModalCloseBtn) el.shareModalCloseBtn.addEventListener('click', closeShareModal);
-    if (el.shareModal) {
-      el.shareModal.addEventListener('click', (e) => {
-        if (e.target === el.shareModal) closeShareModal();
-      });
-    }
-
-    if (el.copyPostBtn) {
-      el.copyPostBtn.addEventListener('click', () => {
-        if (el.postTextarea) {
-          navigator.clipboard.writeText(el.postTextarea.value).then(() => {
-            showToast('LinkedIn post copy ready to paste!');
-          });
-        }
-      });
-    }
-
-    if (el.launchLinkedinBtn) {
-      el.launchLinkedinBtn.addEventListener('click', launchLinkedInShare);
     }
 
     // Online/Offline awareness

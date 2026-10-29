@@ -25,7 +25,6 @@ A high-performance, real-time Currency Converter web application built with mode
 - **🛡️ 30-Minute In-Memory Rate Cache**: Minimizes network roundtrips, optimizes quota, and supports offline cache reuse.
 - **📋 One-Click Copy**: Instant result copying with animated toast notifications.
 - **📱 PWA & Mobile-First**: Responsive layout crafted for desktop (1440px), tablet, and mobile (375px) with full PWA web manifest.
-- **🚀 LinkedIn Share Integration**: Built-in modal with pre-crafted post copy and social preview card.
 
 ---
 
@@ -48,7 +47,7 @@ currency-converter/
 ├── vercel.json           # Vercel deployment configuration & security headers
 ├── netlify.toml          # Netlify zero-config deployment settings
 ├── .gitignore            # Git ignore file
-├── README.md             # Project documentation & LinkedIn showcase
+├── README.md             # Project documentation & showcase
 ├── css/
 │   └── style.css         # Modern fintech design system (light/dark mode)
 ├── js/
@@ -107,7 +106,7 @@ No compilation or installation required!
 
 ## 💼 LinkedIn Showcase & Ready-to-Post Copy
 
-Use the built-in **"Share"** button in the header or copy the post template below to announce this project on LinkedIn:
+Copy the post template below to announce this project on LinkedIn:
 
 ```markdown
 🚀 Just launched my Currency Converter web application! 💱✨
